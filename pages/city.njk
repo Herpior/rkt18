@@ -3,10 +3,15 @@
 {{ title }}
 {% endblock %}
 {% block content %}
-  <div id="data-temperature">
-    <h4>{{city}}</h4>
-    {% for datapoint in data %}
-      {{datapoint.temperature}} degrees celcius at {{datapoint.time}}</br>
-    {% endfor %}
+  <div class="data-city" id="data-{{city.id}}">
+    <h4>{{city.name}}</h4>
+    ({{city.position.x}},{{city.position.y}})
+    <br />
+    <br />
+    <div class="data-temperature">
+      {% for datapoint in data %}
+        {{datapoint.temperature}} degrees celcius at {{datapoint.time}}<br />
+      {% endfor %}
+      </div>
   </div>
 {% endblock %}

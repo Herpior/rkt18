@@ -3,16 +3,18 @@
 {{ title }}
 {% endblock %}
 {% block content %}
+  <div class="row">
   {% for location in locations %}
   {% if location %}
-    <div id="location location-{{location.location}}">
+    <div class="data-general col s6 m4 l3" id="location-{{location.location}}">
       <a href="/{{urls.locations}}/{{location.location}}">
         <h4>{{location.name}}</h4>
       </a>
-      Max temperature: {{location.max}}</br>
-      Min temperature: {{location.min}}</br>
-      Latest temperature: {{location.recentTemp}}</br> {{location.recentTime}}</br>
+      Max temperature: {{location.max}}<br />
+      Min temperature: {{location.min}}<br />
+      Latest temperature: {{location.recentTemp}}<br /> {{location.recentTime}}<br />
     </div>
   {% endif %}
   {% endfor %}
+</div>
 {% endblock %}

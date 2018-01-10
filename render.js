@@ -17,7 +17,7 @@ function mainPage(msg, locations, urls) {
 }
 
 function locationData(data, city, urls) {
-  return nunjucks.render('city.njk', { title: city + ' temperature data', city: city, data: data, urls: urls });
+  return nunjucks.render('city.njk', { title: city.name + ' temperature data', city: city, data: data, urls: urls });
 }
 
 exports.temperatureForm = temperatureForm;

@@ -6,6 +6,10 @@
         Temperature data website
       {% endblock %}
     </title>
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/{{urls.staticFiles}}/style.css">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
     {% block head %}
     {% endblock %}
   </head>
@@ -17,10 +21,14 @@
       </script>
     {% endif %}
   {% endblock %}
-  {% block navi %}
-    <a href="/{{urls.main}}">Main page.</a> </br>
-    <a href="/{{urls.submit}}">Add data here.</a>
-  {% endblock %}
+  <nav class="grey darken-3" role="navigation">
+    <ul class="nav-wrapper container">
+    {% block navi %}
+      <li><a class="nav-item" href="/{{urls.main}}">Main page.</a></li>
+      <li><a class="nav-item" href="/{{urls.submit}}">Add data here.</a></li>
+    {% endblock %}
+    </ul>
+  </nav>
   {% block content %}
   {% endblock %}
   </body>

@@ -58,10 +58,7 @@ function apiRouting(path, req, res) {
 
 function displayFile(filename, res) {
   fs.readFile(filename, (err, data) => {
-    if (err) {
-      res.writeHead(404, {'Content-Type': 'text/html'});
-      return res.end("404 Not Found");
-    }
+    if (err) return writeError(res, "", 404, "File not found");
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write(data);
     return res.end();
@@ -105,7 +102,7 @@ function writeLocationData(location, res) {
   var allPromise = Promise.all([locationPromise, dataPromise]);
   allPromise.then(function (all) {
     let [location, data] = all;
-    let city = location.rows.shift().name;
+    let city = location.rows.shift();
     if (city == undefined) return writeError(res, "", 404, "Not found");
     res.writeHead(200, {'content-type': 'text/html'});
     const content = renderer.locationData(data.rows, city, urls);

@@ -71,7 +71,7 @@ function getLocations() {
 }
 
 function getLocation(location) {
-  const text = "SELECT name, id FROM locations where id = $1";
+  const text = "SELECT * FROM locations where id = $1";
   const params = [location];
   return pool.query(text, params);
 }
