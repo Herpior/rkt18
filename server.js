@@ -16,6 +16,7 @@ const urls = {
   main: '',
   apiPath: 'api',
   staticFiles: 'static',
+  static: {stylesheet: 'style.css'},
   locations: 'cities'
 };
 

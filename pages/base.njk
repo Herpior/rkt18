@@ -6,10 +6,17 @@
         Temperature data website
       {% endblock %}
     </title>
-    <link rel="stylesheet" type="text/css" media="screen,projection" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/{{urls.staticFiles}}/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+    {#<link rel="stylesheet" type="text/css" href="/{{urls.staticFiles}}/{{urls.static.stylesheet}}"> #}
+    <style>
+      .data-city, .data-general {
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    </style>
     {% block head %}
     {% endblock %}
   </head>

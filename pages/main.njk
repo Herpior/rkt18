@@ -6,13 +6,15 @@
   <div class="row">
   {% for location in locations %}
   {% if location %}
-    <div class="data-general col s6 m4 l3" id="location-{{location.location}}">
+    <div class="col s6 m4 l3" >
       <a href="/{{urls.locations}}/{{location.location}}">
-        <h4>{{location.name}}</h4>
-      </a>
-      Max temperature: {{location.max}}<br />
-      Min temperature: {{location.min}}<br />
-      Latest temperature: {{location.recentTemp}}<br /> {{location.recentTime}}<br />
+      <div class="data-general z-depth-2" id="location-{{location.location}}">
+          <h4>{{location.name}}</h4>
+        Max temperature: {{location.max}}<br />
+        Min temperature: {{location.min}}<br />
+        Latest temperature: {{location.recentTemp}}<br /> {{location.recentTime}}<br />
+      </div>
+    </a>
     </div>
   {% endif %}
   {% endfor %}
