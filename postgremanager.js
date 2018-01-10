@@ -39,22 +39,22 @@ function returnErr(err) {
 
 function getMaxTemperatures() {
   const text =
-  "SELECT DISTINCT ON (location) id, temperature, location, time FROM temperatures ORDER BY location ASC, temperature DESC;";
-  // "SELECT DISTINCT ON (location) id, temperature, location, time FROM temperatures WHERE time > now() - interval '24 hours' ORDER BY location ASC, temperature DESC;";
+  //"SELECT DISTINCT ON (location) id, temperature, location, time FROM temperatures ORDER BY location ASC, temperature DESC;";
+  "SELECT DISTINCT ON (location) id, temperature, location, time FROM temperatures WHERE time > now() - interval '24 hours' ORDER BY location ASC, temperature DESC;";
   return pool.query(text);
 }
 
 function getMinTemperatures() {
   const text =
-  "SELECT DISTINCT ON (location) id, temperature, location, time FROM temperatures ORDER BY location ASC, temperature ASC;";
-  // "SELECT DISTINCT ON (location) id, temperature, location, time FROM temperatures WHERE time > now() - interval '24 hours' ORDER BY location ASC, temperature ASC;";
+  //"SELECT DISTINCT ON (location) id, temperature, location, time FROM temperatures ORDER BY location ASC, temperature ASC;";
+  "SELECT DISTINCT ON (location) id, temperature, location, time FROM temperatures WHERE time > now() - interval '24 hours' ORDER BY location ASC, temperature ASC;";
   return pool.query(text);
 }
 
 function getRecentTemperatures() {
   const text =
-  "SELECT DISTINCT ON (location) id, temperature, location, time FROM temperatures ORDER BY location ASC, time DESC;";
-  // "SELECT DISTINCT ON (location) id, temperature, location, time FROM temperatures WHERE time > now() - interval '24 hours' ORDER BY location ASC, time DESC;";
+  //"SELECT DISTINCT ON (location) id, temperature, location, time FROM temperatures ORDER BY location ASC, time DESC;";
+  "SELECT DISTINCT ON (location) id, temperature, location, time FROM temperatures WHERE time > now() - interval '24 hours' ORDER BY location ASC, time DESC;";
   return pool.query(text);
 }
 
