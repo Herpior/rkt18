@@ -1,0 +1,19 @@
+{% extends "base.njk" %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block content %}
+  <form action="" method="post" enctype="multipart/form-data">
+    <label for="location">City:</label>
+    <select name="location" id="location">
+      {% for location in locations %}
+        <option value="{{location.id}}">{{location.name}}</option>
+      {% endfor %}
+    </select>
+    <br />
+    <label for="temperature">Temperature:</label>
+    <input type="number" id="temperature" name="temperature" min="-100" max="100" step="0.01" required="true"/>
+    <br />
+    <input type="submit" value="Create Profile" />
+  </form>
+{% endblock %}

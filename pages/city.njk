@@ -1,0 +1,12 @@
+{% extends "base.njk" %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block content %}
+  <div id="data-temperature">
+    <h4>{{city}}</h4>
+    {% for datapoint in data %}
+      {{datapoint.temperature}} degrees celcius at {{datapoint.time}}</br>
+    {% endfor %}
+  </div>
+{% endblock %}

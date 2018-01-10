@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      {% block title %}
+        Temperature data website
+      {% endblock %}
+    </title>
+    {% block head %}
+    {% endblock %}
+  </head>
+  <body>
+  {% block alert %}
+    {% if msg %}
+      <script>
+        Alert({{msg}});
+      </script>
+    {% endif %}
+  {% endblock %}
+  {% block navi %}
+    <a href="/{{urls.main}}">Main page.</a> </br>
+    <a href="/{{urls.submit}}">Add data here.</a>
+  {% endblock %}
+  {% block content %}
+  {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "reaktor-application",
+  "author": "Roope Herpiö",
+  "description": "prereq assignment for reaktor",
+  "repository": "",
+  "license": "",
+  "dependencies": {
+    "formidable": "^1.1.1",
+    "pg": "^7.4.1",
+    "nunjucks": "^3.0.1"
+  }
+}
