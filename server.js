@@ -9,7 +9,7 @@ const renderer = require('./render.js');
 
 http.createServer( (req, res) => {
   urlRouting(req, res);
-}).listen(8080);
+}).listen(process.env.PORT || 8080);
 
 const urls = {
   submit: 'submit-observation',
