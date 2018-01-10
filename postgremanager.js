@@ -1,8 +1,7 @@
 const { Pool, Client } = require("pg");
 
 const pool = new Pool({
-  connectionString:
-    "postgres://postgres:2eQBTTZeGnYi1HgGDLlif@localhost:5432/Reaktor2018"
+  connectionString: process.env.DATABASE_URL
 });
 
 pool.on("error", (err, client) => {
