@@ -75,14 +75,14 @@ function processObservationForm (req, res) {
     const temp = fields.temperature;
     const loc = fields.location;
     if(!isNumeric(temp) || temp > 100 || temp < -100){ // check if temperature change to previous temperatures is too fast instead?
-      return writeError(res, 400, "Failed to receive data, temperature not valid");
+      return writeError(res, "", 400, "Failed to receive data, temperature not valid");
     }
     else {
       const resultPromise = postgre.addObservation(fields.location, fields.temperature);
       resultPromise.then(function (result) {
         writeMain(res, "Observation successfully added");
       }, function (err) {
-        writeError(res, 500, "Failed to receive data, internal error");
+        writeError(res, err, 500, "Failed to receive data, internal error");
       });
     }
   });
@@ -95,14 +95,8 @@ function writeTempForm(res) {
     const content = renderer.temperatureForm(locations.rows, urls);
     res.end(content);
   }, function (err) {
-    writeError(res, 500, "Internal error");
+    writeError(res, err, 500, "Internal error");
   });
-}
-
-function writeError(res, code, msg) {
-  res.writeHead(code, {'content-type': 'text/html'});
-  const content = renderer.errorPage(code, msg, urls);
-  res.end(content);
 }
 
 function writeLocationData(location, res) {
@@ -112,12 +106,12 @@ function writeLocationData(location, res) {
   allPromise.then(function (all) {
     let [location, data] = all;
     let city = location.rows.shift().name;
-    if (city == undefined) return writeError(res, 404, "Not found");
+    if (city == undefined) return writeError(res, "", 404, "Not found");
     res.writeHead(200, {'content-type': 'text/html'});
     const content = renderer.locationData(data.rows, city, urls);
     res.end(content);
   }, function (err) {
-    writeError(res, 500, "Internal error");
+    writeError(res, err, 500, "Internal error");
   });
 }
 
@@ -151,9 +145,15 @@ function writeMain(res, msg) {
     res.writeHead(200, {'Content-Type': 'text/html'});
     return res.end(content);
   }, function (err) {
-    console.log(err);
-    return writeError(res, 500, "Internal error");
+    return writeError(res, err, 500, "Internal error");
   });
+}
+
+function writeError(res, err, code, msg) {
+  if (err) console.log(err);
+  res.writeHead(code, {'content-type': 'text/html'});
+  const content = renderer.errorPage(code, msg, urls);
+  res.end(content);
 }
 
 function isNumeric(n) {
