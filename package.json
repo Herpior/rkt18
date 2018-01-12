@@ -2,7 +2,7 @@
   "name": "reaktor-application",
   "author": "Roope Herpiö",
   "description": "prereq assignment for reaktor",
-  "repository": "",
+  "repository": "https://github.com/Herpior/rkt18.git",
   "license": "",
   "dependencies": {
     "formidable": "^1.1.1",
