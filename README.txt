@@ -1,3 +1,5 @@
+SQL commands used to create and populate the tables
+
 CREATE TABLE locations(
   id SERIAL PRIMARY KEY,
   name VARCHAR(64) not null,
