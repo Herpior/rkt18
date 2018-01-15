@@ -53,8 +53,8 @@ function getMinTemperatures() {
 
 function getRecentTemperatures() {
   const text =
-  //"SELECT DISTINCT ON (location) id, temperature, location, time FROM temperatures ORDER BY location ASC, time DESC;";
-  "SELECT DISTINCT ON (location) id, temperature, location, time FROM temperatures WHERE time > now() - interval '24 hours' ORDER BY location ASC, time DESC;";
+  "SELECT DISTINCT ON (location) id, temperature, location, time FROM temperatures ORDER BY location ASC, time DESC;";
+  //"SELECT DISTINCT ON (location) id, temperature, location, time FROM temperatures WHERE time > now() - interval '24 hours' ORDER BY location ASC, time DESC;";
   return pool.query(text);
 }
 
